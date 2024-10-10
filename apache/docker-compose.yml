@@ -7,7 +7,7 @@ services:
     ports:
       - 8080:80
     volumes:
-      - ./html:/var/www/html
+      - ./www:/var/www
       - ./apache2:/etc/apache2
     depends_on:
       - mysql
