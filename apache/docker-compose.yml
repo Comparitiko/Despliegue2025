@@ -1,6 +1,7 @@
 services:
   apache:
     container_name: apache
+    hostname: apache-comparitiko
     build:
       context: .
       dockerfile: Dockerfile
