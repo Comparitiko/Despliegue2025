@@ -11,16 +11,18 @@ services:
       - ./www:/var/www
       - ./apache2:/etc/apache2
     depends_on:
-      - mysql
-  mysql:
-    container_name: mysql
-    image: mysql:8.0.38
-    ports:
-      - 3306:3306
+      - mariadb
+
+  mariadb:
+    container_name: mariadb-despliegue
+    image: mariadb:10.11.8
+    restart: on-failure
     environment:
-      MYSQL_ROOT_PASSWORD: mysql?
-      MYSQL_DATABASE: despliegue
-      MYSQL_USER: comparitiko
-      MYSQL_PASSWORD: gabriel123
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+      MARIADB_USER: ${MARIADB_USER}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+    ports:
+      - "3306:3306"
     volumes:
-      - ./mysql:/var/lib/mysql
+      - ./mariadb:/var/lib/mysql

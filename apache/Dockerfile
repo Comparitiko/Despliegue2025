@@ -5,4 +5,10 @@ RUN apt install libapache2-mod-php8.3 -y
 RUN apt install php8.3-mysql -y
 RUN apt install curl -y
 RUN apt install nano -y
-RUN apt-get update && apt-get install -y iproute2
+RUN apt install iproute2 -y
+RUN apt install sudo -y
+
+RUN useradd -ms /bin/bash gabriel
+RUN usermod -aG sudo gabriel
+
+USER gabriel
